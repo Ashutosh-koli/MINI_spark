@@ -12,10 +12,28 @@ import MineralOrange from "../assets/themes/MineralOrange.png";
 import Spark from "../assets/Spark.png";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { userDetails } from "../services/user.services";
+
 import Boy from "../assets/Boy.png";
 import { setDesign, getProfile } from "../services/profile.services";
 import useIsMobile from "../components/hooks/useIsMobile";
+
+
+const URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
+export const userDetails = async () => {
+  return await fetch(`${URL}/api/user/userdetails`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+
+
+
 
 const Appearance = () => {
   const isMobile = useIsMobile();

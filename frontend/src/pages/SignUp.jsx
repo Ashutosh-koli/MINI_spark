@@ -4,9 +4,26 @@ import Spark from "../assets/Spark.png";
 import { toast } from "react-toastify";
 import { IoMdCheckbox } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { userSignup } from "../services/user.services";
+
 import image from "../assets/image.png";
 import useIsMobile from "../components/hooks/useIsMobile";
+
+
+
+const URL = import.meta.env.VITE_BACKEND_URL;
+
+export const userSignup = async (data) => {
+  return await fetch(`${URL}/api/user/signup`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+};
+
+
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex =
   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d@$!%*?&]{8,}$/;

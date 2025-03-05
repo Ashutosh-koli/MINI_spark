@@ -5,9 +5,27 @@ import { getProfile } from "../services/profile.services";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Spark from "../assets/Spark.png";
-import { userDetails, updateUser } from "../services/user.services";
+
 import Boy from "../assets/Boy.png";
 import useIsMobile from "../components/hooks/useIsMobile";
+
+const URL = import.meta.env.VITE_BACKEND_URL;
+
+
+
+
+
+export const updateUser = async (data) => {
+  return await fetch(`${URL}/api/user/updateuser`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
+
 
 const Settings = () => {
   const active = {
