@@ -1,0 +1,132 @@
+.main {
+  width: 16vw;
+  height: 100vh;
+  background-color: #f3f3f1;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  background-color: white;
+  width: 100%;
+  height: 7.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: black;
+  align-items: center;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 3rem;
+  letter-spacing: 2%;
+}
+.blocks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  gap: 1.3rem;
+  height: 4rem;
+  width: 100%;
+}
+.blocks svg{
+  margin-left: 1.9rem;
+}
+.blocks span {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  letter-spacing: 0%;
+}
+.active{
+  background-color: #f3f3f1;
+}
+.inactive{
+  background-color: white;
+}
+.logoutdiv{
+  width: 100%;
+  height: calc(100% - 23.5rem);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+.lgbtn{
+  border: 1px solid #000000;
+  border-radius: 3.75rem;
+  position: fixed;
+  bottom: 2rem;
+  width: 11rem;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  background-color: white;
+  text-transform: capitalize;
+  color: #000000;
+  font-style: italic;
+}
+.lgbtn img{
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #F3F3F1;
+  border-radius: 50%;
+}
+.logout button {
+  position: fixed;
+  bottom: 4rem;
+  left: 4rem;
+  width: 8.3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  color: #000000;
+  background-color: #f3f3f1;
+  align-items: center;
+  z-index: 51;
+  border: none;
+  border-radius: 1.5rem;
+  display: flex;
+  cursor: pointer;
+  flex-direction: row;
+}
+.logout button svg {
+  margin-right: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  .main {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    align-items: center;
+    justify-content: space-evenly;
+    bottom: 0;
+    z-index: 50;
+    background-color: #fcfcfc;
+    border: 0.8px solid #00000033;
+  }
+  .blocks {
+    display: flex;
+    width: 25%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .blocks span {
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    letter-spacing: 0%;
+  }
+  .blocks svg{
+    margin-left: 0;
+  }
+}
