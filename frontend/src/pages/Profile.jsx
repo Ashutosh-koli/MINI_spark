@@ -14,6 +14,20 @@ import useIsMobile from "../components/hooks/useIsMobile";
 import { getLinks, deleteLink, setShow } from "../services/link.services";
 import { BsShare } from "react-icons/bs";
 const url = import.meta.env.VITE_FRONTEND_URL;
+
+
+export const userDetails = async () => {
+  return await fetch(`${URL}/api/user/userdetails`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+
+
+
 const Profile = () => {
   const navigate = useNavigate();
   const active = {
