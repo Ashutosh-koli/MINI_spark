@@ -1,8 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles/AddLinkModal.module.css";
-import { createLink } from "../services/link.services";
 import { toast } from "react-toastify";
 import useMobile from '../components/hooks/useIsMobile'
+
+const URL = import.meta.env.VITE_BACKEND_URL;
+
+export const createLink = async (data) => {
+  return await fetch(`${URL}/api/link/create`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
+
+
 const AddLinkModal = ({ onClose, profileId }) => {
   const modalRef = useRef(null);
   const isMobile = useMobile();

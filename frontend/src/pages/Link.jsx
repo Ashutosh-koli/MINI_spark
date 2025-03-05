@@ -2,18 +2,39 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Spark from "../assets/Spark.png";
 import Boy from "../assets/Boy.png";
-import styles from "./styles/Profile.module.css";
-import { getProfile, setProfile } from "../services/profile.services";
+import styles from "./Link.module.css";
 import { toast } from "react-toastify";
-import { userDetails } from "../services/user.services";
 import { useNavigate } from "react-router-dom";
 import Preview from "../components/Preview";
 import AddLinkModal from "../modals/AddLinkModal";
 import EditLinkModal from "../modals/EditLinkModal";
 import useIsMobile from "../components/hooks/useIsMobile";
-import { getLinks, deleteLink, setShow } from "../services/link.services";
 import { BsShare } from "react-icons/bs";
+
+
 const url = import.meta.env.VITE_FRONTEND_URL;
+
+
+export const getProfile = async () => {
+  return await fetch(`${URL}/api/profile/getprofile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },  
+  });
+};
+
+
+export const setProfile = async (data) => {
+  return await fetch(`${URL}/api/profile/setprofile`, {
+    method: "POST",
+    headers: {
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: data,
+  });
+};
 
 
 export const userDetails = async () => {
@@ -26,6 +47,38 @@ export const userDetails = async () => {
   });
 };
 
+
+export const getLinks = async () => {
+  return await fetch(`${URL}/api/link/getlinks`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+
+
+export const deleteLink = async (id) => {
+  return await fetch(`${URL}/api/link/delete/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+
+export const setShow = async (id, data) => {
+  return await fetch(`${URL}/api/link/setshow/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
 
 
 const Profile = () => {

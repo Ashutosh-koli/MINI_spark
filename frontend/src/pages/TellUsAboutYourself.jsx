@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import Spark from "../assets/Spark.png";
-import styles from "./styles/TellUs.module.css";
+import styles from "./TellUsAboutYourself.module.css";
 import { useNavigate } from "react-router-dom";
 import image from "../assets/image.png";
 import useIsMobile from "../components/hooks/useIsMobile";
@@ -62,16 +62,16 @@ const categories = [
 ];
 
 
-export const userDetails = async () => {
-  return await fetch(`${URL}/api/user/userdetails`, {
-    method: "GET",
+export const setUserDetails = async (data) => {
+  return await fetch(`${URL}/api/profile/setdetails`, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `${localStorage.getItem("token")}`,
     },
+    body: JSON.stringify(data),
   });
 };
-
 
 
 const TellUs = () => {

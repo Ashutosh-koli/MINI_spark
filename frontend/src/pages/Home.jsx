@@ -7,7 +7,7 @@ import analytics from "../assets/analytics.png";
 import { IoMenu } from "react-icons/io5";
 import div from "../assets/div.png";
 import { useNavigate } from "react-router-dom";
-import styles from "./styles/Home.module.css";
+import styles from "./Home.module.css";
 import useIsMobile from "../components/hooks/useIsMobile";
 import Bigframe from "../assets/Bigframe.png";
 const Home = () => {

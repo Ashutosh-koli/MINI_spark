@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import styles from "./styles/Analytics.module.css";
+import styles from "./Analytics.module.css";
 import Spark from "../assets/Spark.png";
 import Boy from "../assets/Boy.png";
-import { userDetails } from "../services/user.services";
 import useIsMobile from "../components/hooks/useIsMobile";
-import { getAnalytics } from "../services/profile.services";
+
 import { GoDotFill } from "react-icons/go";
 import {
   LineChart,
@@ -17,6 +16,27 @@ import {
 } from "recharts";
 import { BarChart, Bar, Rectangle } from "recharts";
 import { PieChart, Pie, Sector, Cell } from "recharts";
+
+const URL = import.meta.env.VITE_BACKEND_URL;
+export const userDetails = async () => {
+  return await fetch(`${URL}/api/user/userdetails`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+export const getAnalytics = async () => {
+  return await fetch(`${URL}/api/profile/getanalytics`, {
+    metthod: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+
 
 const Analytics = () => {
   const isMobile = useIsMobile();

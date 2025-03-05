@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import SignUp from "./pages/SignUp";
-import TellUs from "./pages/TellUs";
+import SignUp from "./pages/Register";
+import TellUsAboutYourself from "./pages/TellUsAboutYourself";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile";
+import Profile from "./pages/Link";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, Bounce } from "react-toastify";
 import Appearance from "./pages/Appearance";
@@ -34,7 +34,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/tellus" element={<TellUs />}></Route>
+          <Route path="/TellUsAboutYourself" element={<TellUsAboutYourself />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/profile/:username" element={<Visitprofile />}></Route>
           <Route path="/appearance" element={<Appearance />}></Route>

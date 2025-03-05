@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import styles from "./styles/Settings.module.css";
-import { getProfile } from "../services/profile.services";
+import styles from "./Settings.module.css";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Spark from "../assets/Spark.png";
-
 import Boy from "../assets/Boy.png";
 import useIsMobile from "../components/hooks/useIsMobile";
 
 const URL = import.meta.env.VITE_BACKEND_URL;
+
+export const getProfile = async () => {
+  return await fetch(`${URL}/api/profile/getprofile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+
 
 
 

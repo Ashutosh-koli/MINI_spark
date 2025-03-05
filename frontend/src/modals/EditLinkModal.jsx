@@ -2,6 +2,41 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles/AddLinkModal.module.css";
 import { toast } from "react-toastify";
 import { getSingleLink, editLink, deleteLink } from "../services/link.services";
+
+const URL = import.meta.env.VITE_BACKEND_URL;
+
+export const getSingleLink = async (id) => {
+  return await fetch(`${URL}/api/link/getlink/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+
+export const editLink = async (id, data) => {
+  return await fetch(`${URL}/api/link/editlink/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
+
+export const deleteLink = async (id) => {
+  return await fetch(`${URL}/api/link/delete/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+  });
+};
+
+
 const EditLinkModal = ({ onClose, linkId }) => {
   const modalRef = useRef(null);
   const [isLinkActive, setIsLinkActive] = useState(true);

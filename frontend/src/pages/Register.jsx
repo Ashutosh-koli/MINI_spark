@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import styles from "./styles/SignUp.module.css";
+import styles from "./Register.module.css";
 import Spark from "../assets/Spark.png";
 import { toast } from "react-toastify";
 import { IoMdCheckbox } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
 import image from "../assets/image.png";
 import useIsMobile from "../components/hooks/useIsMobile";
 

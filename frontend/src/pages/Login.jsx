@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import styles from "./styles/Login.module.css";
+import styles from "./Login.module.css";
 import Spark from "../assets/Spark.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
 import image from "../assets/image.png";
 import useIsMobile from "../components/hooks/useIsMobile";
 

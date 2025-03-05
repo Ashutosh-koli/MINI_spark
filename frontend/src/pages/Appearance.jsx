@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import styles from "./styles/Appearance.module.css";
+import styles from "./Appearance.module.css";
 import AirBlack from "../assets/themes/AirBlack.png";
 import AirGrey from "../assets/themes/AirGrey.png";
 import AirSmoke from "../assets/themes/AirSmoke.png";
@@ -12,9 +12,7 @@ import MineralOrange from "../assets/themes/MineralOrange.png";
 import Spark from "../assets/Spark.png";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
 import Boy from "../assets/Boy.png";
-import { setDesign, getProfile } from "../services/profile.services";
 import useIsMobile from "../components/hooks/useIsMobile";
 
 
@@ -31,6 +29,19 @@ export const userDetails = async () => {
     },
   });
 };
+
+
+export const setDesign = async (data) => {
+  return await fetch(`${URL}/api/profile/setdesign`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
+
 
 
 
