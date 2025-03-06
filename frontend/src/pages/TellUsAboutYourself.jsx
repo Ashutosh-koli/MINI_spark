@@ -5,11 +5,7 @@ import styles from "./TellUsAboutYourself.module.css";
 import { useNavigate } from "react-router-dom";
 import image from "../assets/image.png";
 import useIsMobile from "../components/hooks/useIsMobile";
-
-
-
-const URL = import.meta.env.VITE_BACKEND_URL;
-
+import { setUserDetails } from "../services/profile.services";
 const categories = [
   {
     icon: "🎨",
@@ -60,20 +56,6 @@ const categories = [
     name: "Travel & Tourism",
   },
 ];
-
-
-export const setUserDetails = async (data) => {
-  return await fetch(`${URL}/api/profile/setdetails`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify(data),
-  });
-};
-
-
 const TellUs = () => {
   const isMobile = useIsMobile();
   const [username, setUsername] = useState("");

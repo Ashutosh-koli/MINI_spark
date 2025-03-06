@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/Register";
 import TellUsAboutYourself from "./pages/TellUsAboutYourself";
 import Login from "./pages/Login";
-import Profile from "./pages/Link";
+import Profile from "./pages/Profile";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, Bounce } from "react-toastify";
 import Appearance from "./pages/Appearance";

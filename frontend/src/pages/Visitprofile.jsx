@@ -2,43 +2,11 @@ import React, { useState, useEffect } from "react";
 import styles from "./Visitprofile.module.css";
 import Boy from "../assets/Boy.png";
 import { useParams } from "react-router-dom";
+import { visitProfile, getGlobalProfile } from "../services/profile.services";
 import useIsMobile from "../components/hooks/useIsMobile";
+import { visitLogs } from "../services/logs.services";
 import { toast } from "react-toastify";
-
-
 const url = import.meta.env.VITE_FRONTEND_URL;
-
-
-
-
-
-export const visitProfile = async (data) => {
-  return await fetch(`${URL}/api/profile/visitprofile`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-};
-
-export const getGlobalProfile = async (username) => {
-  return await fetch(`${URL}/api/profile/getprofile/${username}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
-
-export const visitLogs = async (id) => {
-  return await fetch(`${URL}/api/visit/${id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
 
 const Visitprofile = () => {
   const { username } = useParams();

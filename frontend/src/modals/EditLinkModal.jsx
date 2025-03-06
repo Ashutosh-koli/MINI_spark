@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles/AddLinkModal.module.css";
 import { toast } from "react-toastify";
-import { getSingleLink, editLink, deleteLink } from "../services/link.services";
 
 const URL = import.meta.env.VITE_BACKEND_URL;
 

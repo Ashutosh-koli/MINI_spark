@@ -3,25 +3,9 @@ import styles from "./Login.module.css";
 import Spark from "../assets/Spark.png";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { userLogin } from "../services/user.services";
 import image from "../assets/image.png";
 import useIsMobile from "../components/hooks/useIsMobile";
-
-
-
-const URL = import.meta.env.VITE_BACKEND_URL;
-
-export const userLogin = async (data) => {
-  return await fetch(`${URL}/api/user/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-};
-
-
-
 const Login = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
