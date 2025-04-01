@@ -1,178 +1,102 @@
-LinkTree Clone - Analytics and Link Management System
-Overview
-A comprehensive web application that allows users to create and manage their custom link pages, similar to LinkTree, with advanced analytics tracking and customization options.
+# LinkTree Clone - Analytics and Link Management System
 
-Table of Contents
-Features
-System Architecture
-Project Structure
-Setup Instructions
-API Documentation
-Components
-Analytics System
-Customization Options
-Security
-Features
-1. User Management
-Secure authentication system
-User profile customization
-Preference management
-Role-based access control
-2. Link Management
-Add/Edit/Delete links
-Support for multiple platforms:
-Instagram
-YouTube
-Facebook
-Twitter
-Shop integration:
-Shopify
-WooCommerce
-BigCommerce
-Magento
-3. Analytics Dashboard
-Real-time click tracking
-Device analytics
-Traffic sources
-Engagement metrics
-Visual data representation using Recharts
-4. Appearance Customization
-Custom themes
-Layout options:
-Grid
-Stack
-Carousel
-Color schemes
-Button styles
-Font selection
-System Architecture
-Backend Architecture
-// Backend Core (index.js)
-const express = require("express");
-const app = express();
-// ...middleware configuration
-app.use("/api/user", userRoute);
-app.use("/api/link", linkRoute);
-app.use("/api", apperanceRoute);
-app.use("/api/track", clickRoutes);
-Database Models
-// Models Structure
-├── models/
-    ├── user.model.js      // User authentication & profile
-    ├── link.model.js      // Link management
-    ├── click.model.js     // Analytics tracking
-    ├── layout.model.js    // Appearance settings
-Frontend Architecture
-// App.jsx - Main Routing
-<Routes>
-  <Route path="/" element={<Dashboard />} />
-  <Route path="/links" element={<Links />} />
-  <Route path="/analytics" element={<Analytixs />} />
-  <Route path="/appearance" element={<Appearence />} />
-  {/* ...other routes */}
-</Routes>
-Setup Instructions
-Backend Setup
-Install dependencies:
-cd backend
-npm install
-Environment configuration:
-# .env
-PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-Start the server:
-npm run dev
-Frontend Setup
-Install dependencies:
-cd client
-npm install
-Environment configuration:
-# .env
-VITE_BACKEND_URL=http://localhost:5000
-Start the development server:
-npm run dev
-API Documentation
-User Routes
-POST / api / user / register; // User registration
-POST / api / user / login; // User authentication
-GET / api / user / profile; // Get user profile
-PUT / api / user / preferences; // Update user preferences
-Link Routes
-POST /api/link/linkcreate   // Create new link
-GET /api/link/linkdetails   // Get all links
-PUT /api/link/updateStatus  // Update link status
-DELETE /api/link/:id        // Delete link
-Analytics Routes
-POST / api / track / click; // Track click event
-GET / api / track / analytics; // Get analytics data
-Components
-Analytics Dashboard
-// Analytixs.jsx
-const Analytixs = () => {
-  // State management
-  const [metrics, setMetrics] = useState([]);
-  const [dataLine, setDataLine] = useState([]);
+## Overview
+The **LinkTree Clone** is a **MERN stack-based** link management platform that allows users to create a personalized link page, manage links, and track analytics for link clicks. It includes user authentication, profile customization, analytics tracking, and an interactive dashboard.
 
-  // Charts
-  return (
-    <div className="analytics-dashboard">
-      <LineChart /> // Time-based analytics
-      <BarChart /> // Device distribution
-      <PieChart /> // Traffic sources
-    </div>
-  );
-};
-Link Management
-// Links.jsx
-const Links = () => {
-  // Link handling
-  const handleAddLink = async (linkData) => {
-    // API call to add link
-  };
+## Features
+- **User Authentication** (JWT-based login/signup)
+- **Profile Management** (Set and update username, category, and appearance settings)
+- **Link Management** (Create, update, delete, and organize links)
+- **Redirection System** (Links redirect users to the original URLs)
+- **Analytics Tracking**:
+  - Track total clicks per link
+  - Capture **device type**, **timestamp**, and **unique views** using IP & cookies
+  - Display analytics in an interactive dashboard with visual charts
+- **Secure API Endpoints** (Protected routes with authentication middleware)
+- **Responsive UI** (Works seamlessly on desktop and mobile devices)
 
-  return (
-    <div className="link-manager">{/* Link addition/editing interface */}</div>
-  );
-};
-Analytics System
-Click Tracking
-// clicks.router.js
-router.post("/click", async (req, res) => {
-  const { userId, itemId, type, application, os, ip } = req.body;
-  // Track and store click data
-});
-Data Visualization
-Line charts for time-based analysis
-Bar charts for device distribution
-Pie charts for traffic sources
-Custom metrics display
-Customization Options
-Theme Customization
-// appearance.route.js
-router.put("/update", async (req, res) => {
-  const { layout, button, buttonText, font, fontColor } = req.body;
-  // Update appearance settings
-});
-Layout Options
-Stack: Vertical list
-Grid: 2-column layout
-Carousel: Horizontal scroll
-Security
-Authentication
-// auth.middleware.js
-const authMiddleware = async (req, res, next) => {
-  // JWT token verification
-  // User authentication
-};
-Data Protection
-JWT for session management
-Password hashing
-IP-based click tracking
-Rate limiting
-Contributing
-Fork the repository
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a Pull Request
+## Tech Stack
+### Frontend
+- **React (Vite)** – For a fast and optimized user interface
+- **CSS** – Custom styles for responsiveness
+- **Recharts** – For interactive analytics charts
+
+### Backend
+- **Node.js & Express.js** – API development
+- **MongoDB & Mongoose** – Database management
+- **JWT Authentication** – Secure user authentication
+- **Multer** – File handling for profile pictures (optional)
+
+## Installation & Setup
+### Prerequisites
+Make sure you have the following installed:
+- Node.js (Latest LTS version)
+- MongoDB (Local or Atlas)
+- npm or yarn
+
+### Backend Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo/linktree-clone.git
+   cd linktree-clone/backend
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Create a `.env` file and configure the following:
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   PORT=5000
+   CLIENT_URL=http://localhost:5173
+   ```
+4. Run the backend server:
+   ```sh
+   npm start
+   ```
+
+### Frontend Setup
+1. Navigate to the frontend folder:
+   ```sh
+   cd ../frontend
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Create a `.env` file and configure the following:
+   ```env
+   VITE_API_URL=http://localhost:5000
+   ```
+4. Run the frontend development server:
+   ```sh
+   npm run dev
+   ```
+
+## API Endpoints
+### Authentication
+- `POST /api/auth/register` – Register a new user
+- `POST /api/auth/login` – Login with username & password
+
+### Profile
+- `GET /api/profile` – Get user profile details
+- `PUT /api/profile` – Update username, category, and appearance
+
+### Links
+- `POST /api/links` – Create a new link
+- `GET /api/links` – Retrieve all user links
+- `PUT /api/links/:id` – Update a link
+- `DELETE /api/links/:id` – Delete a link
+- `GET /:username` – Retrieve user’s public link page
+
+### Analytics
+- `GET /api/analytics/:linkId` – Get analytics for a specific link
+- `GET /api/analytics?user=username` – Get analytics for all user links
+
+## Future Improvements
+- Add role-based access control
+- Custom domain integration
+- Dark mode theme
+
+
